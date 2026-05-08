@@ -22,5 +22,11 @@
     "url": "https://mirror.accum.se/mirror/kde.org/files/marble/downloads/windows/Marble-setup_1.14.1_x64.exe",
     "download_time": "2026-05-08T20:50:38.293891+00:00",
     "retention_days": 7
+  },
+  {
+    "filename": "Elk.pdf",
+    "url": "https://www.rhino3d.com/new-source/docs/guides/architecture/workflows/Elk.pdf",
+    "download_time": "2026-05-08T21:55:21.870305+00:00",
+    "retention_days": 7
   }
 ]
