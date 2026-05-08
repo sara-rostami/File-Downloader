@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 اسکریپت دانلود فایل و ذخیره در downloads/
-ورودی: URL, filename (اختیاری), retention_days
-خروجی: فایل ذخیره شده + به‌روزرسانی downloads/downloads_meta.json
+ورودی: URL, retention_days, filename (اختیاری)
 """
 
 import sys
@@ -39,7 +38,6 @@ def update_metadata(filename, url, retention_days):
                 metadata = json.load(f)
             except json.JSONDecodeError:
                 metadata = []
-    # اگر قبلاً فایلی با همین اسم بود، تاریخ رو به‌روز کن
     for entry in metadata:
         if entry["filename"] == filename:
             entry["download_time"] = datetime.now(timezone.utc).isoformat()
@@ -65,7 +63,6 @@ def git_commit_and_push(message):
     """مراحل git add, commit, push"""
     run_cmd("git config user.name 'github-actions[bot]'")
     run_cmd("git config user.email 'github-actions[bot]@users.noreply.github.com'")
-    # فقط اگر تغییری وجود داشته باشه commit کن
     run_cmd("git add -A")
     diff = subprocess.run("git diff --cached --quiet", shell=True)
     if diff.returncode != 0:
@@ -81,7 +78,12 @@ def main():
 
     url = sys.argv[1]
     retention_days = int(sys.argv[2])
-    filename = sys.argv[3] if len(sys.argv) > 3 else get_filename_from_url(url)
+
+    # اصلاح: فقط در صورتی filename را از argv[3] بگیر که موجود و خالی نباشد
+    if len(sys.argv) > 3 and sys.argv[3].strip():
+        filename = sys.argv[3].strip()
+    else:
+        filename = get_filename_from_url(url)
 
     dest_path = os.path.join(OUTPUT_DIR, filename)
     print(f"Downloading {url} -> {dest_path}")
