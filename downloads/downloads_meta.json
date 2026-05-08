@@ -16,5 +16,11 @@
     "url": "https://www.onworks.net/ms/software/windows/app-osm-explorer/",
     "download_time": "2026-05-08T20:46:16.621916+00:00",
     "retention_days": 7
+  },
+  {
+    "filename": "Marble-setup_1.14.1_x64.exe",
+    "url": "https://mirror.accum.se/mirror/kde.org/files/marble/downloads/windows/Marble-setup_1.14.1_x64.exe",
+    "download_time": "2026-05-08T20:50:38.293891+00:00",
+    "retention_days": 7
   }
 ]
