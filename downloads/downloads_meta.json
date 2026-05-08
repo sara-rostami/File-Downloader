@@ -28,5 +28,11 @@
     "url": "https://www.rhino3d.com/new-source/docs/guides/architecture/workflows/Elk.pdf",
     "download_time": "2026-05-08T21:55:21.870305+00:00",
     "retention_days": 7
+  },
+  {
+    "filename": "sample.osm",
+    "url": "http://www.learnosm.org/files/sample.osm",
+    "download_time": "2026-05-08T22:34:37.645689+00:00",
+    "retention_days": 7
   }
 ]
