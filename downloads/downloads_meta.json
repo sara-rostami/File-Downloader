@@ -4,5 +4,11 @@
     "url": "https://wordpress.org/latest.zip",
     "download_time": "2026-05-08T20:13:24.848870+00:00",
     "retention_days": 7
+  },
+  {
+    "filename": "josm-setup.exe",
+    "url": "https://josm.openstreetmap.de/download/windows/josm-setup.exe",
+    "download_time": "2026-05-08T20:15:55.182653+00:00",
+    "retention_days": 7
   }
 ]
