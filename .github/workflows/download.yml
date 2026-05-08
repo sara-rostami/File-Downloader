@@ -1,0 +1,41 @@
+name: Download File to Repo
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'لینک فایل برای دانلود'
+        required: true
+      filename:
+        description: 'نام فایل (اختیاری، در صورت خالی بودن از URL استخراج می‌شود)'
+        required: false
+        default: ''
+      retention_days:
+        description: 'مدت نگهداری فایل به روز (پیش‌فرض ۷ روز)'
+        required: false
+        default: '7'
+
+permissions:
+  contents: write
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run download script
+        env:
+          URL: ${{ github.event.inputs.url }}
+          FILENAME: ${{ github.event.inputs.filename }}
+          RETENTION_DAYS: ${{ github.event.inputs.retention_days }}
+        run: |
+          python scripts/download.py "$URL" "$RETENTION_DAYS" "$FILENAME"
