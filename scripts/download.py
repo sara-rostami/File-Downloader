@@ -59,14 +59,22 @@ def download_file(url, dest_path):
     with urlopen(req) as response, open(dest_path, "wb") as out_file:
         shutil.copyfileobj(response, out_file)
 
-def git_commit_and_push(message):
-    """مراحل git add, commit, push"""
+def git_commit_and_push(filename):
+    """git add -f برای فایل مشخص، سپس commit و push"""
     run_cmd("git config user.name 'github-actions[bot]'")
     run_cmd("git config user.email 'github-actions[bot]@users.noreply.github.com'")
-    run_cmd("git add -A")
+    
+    file_path = os.path.join(OUTPUT_DIR, filename)
+    meta_path = META_FILE
+    
+    # اجباری اضافه کردن فایل دانلود و متادیتا (حتی اگر در gitignore باشند)
+    run_cmd(f"git add -f {file_path} {meta_path}")
+    
+    # بررسی اینکه تغییری برای commit وجود دارد
     diff = subprocess.run("git diff --cached --quiet", shell=True)
     if diff.returncode != 0:
-        run_cmd(f'git commit -m "{message}"')
+        commit_msg = f"Download {filename}"
+        run_cmd(f'git commit -m "{commit_msg}"')
         run_cmd("git push")
     else:
         print("No changes to commit.")
@@ -79,7 +87,6 @@ def main():
     url = sys.argv[1]
     retention_days = int(sys.argv[2])
 
-    # اصلاح: فقط در صورتی filename را از argv[3] بگیر که موجود و خالی نباشد
     if len(sys.argv) > 3 and sys.argv[3].strip():
         filename = sys.argv[3].strip()
     else:
@@ -90,7 +97,7 @@ def main():
     download_file(url, dest_path)
 
     update_metadata(filename, url, retention_days)
-    git_commit_and_push(f"Download {filename} (expires in {retention_days} days)")
+    git_commit_and_push(filename)
 
 if __name__ == "__main__":
     main()
