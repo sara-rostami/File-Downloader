@@ -4,35 +4,5 @@
     "url": "https://wordpress.org/latest.zip",
     "download_time": "2026-05-12T20:04:34.216334+00:00",
     "retention_days": 7
-  },
-  {
-    "filename": "josm-setup.exe",
-    "url": "https://josm.openstreetmap.de/download/windows/josm-setup.exe",
-    "download_time": "2026-05-08T20:15:55.182653+00:00",
-    "retention_days": 7
-  },
-  {
-    "filename": "OsmExplorer_V4.zip",
-    "url": "https://www.onworks.net/ms/software/windows/app-osm-explorer/",
-    "download_time": "2026-05-08T20:46:16.621916+00:00",
-    "retention_days": 7
-  },
-  {
-    "filename": "Marble-setup_1.14.1_x64.exe",
-    "url": "https://mirror.accum.se/mirror/kde.org/files/marble/downloads/windows/Marble-setup_1.14.1_x64.exe",
-    "download_time": "2026-05-08T20:50:38.293891+00:00",
-    "retention_days": 7
-  },
-  {
-    "filename": "Elk.pdf",
-    "url": "https://www.rhino3d.com/new-source/docs/guides/architecture/workflows/Elk.pdf",
-    "download_time": "2026-05-08T21:55:21.870305+00:00",
-    "retention_days": 7
-  },
-  {
-    "filename": "sample.osm",
-    "url": "http://www.learnosm.org/files/sample.osm",
-    "download_time": "2026-05-08T22:34:37.645689+00:00",
-    "retention_days": 7
   }
 ]
